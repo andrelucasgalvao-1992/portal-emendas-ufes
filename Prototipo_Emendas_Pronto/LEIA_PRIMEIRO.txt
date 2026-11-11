@@ -1,0 +1,19 @@
+PORTAL DE EMENDAS PARLAMENTARES – UFES | PROTÓTIPO ACADÊMICO v0.10
+
+1. Extraia o pacote ZIP inteiro.
+2. Abra index.html no Chrome, Firefox ou Edge.
+3. Leia o aviso de entrada e clique em "Entendi — acessar o protótipo".
+4. Após o fechamento, os gráficos e relógios começam a animar.
+5. Use o menu para acessar as abas, incluindo Descentralizações.
+
+Alterações v0.10:
+- Três textos revisados de Fontes, Limitações e Finalidade.
+- Aviso modal inicial, com bloqueio de navegação e efeito sombreado.
+- Relógios das páginas Painel geral, Consulta, Aderência e Execução com animação.
+- Gráficos de barras das páginas Painel geral e Execução animados.
+- Aba Descentralizações informativa, sem dados inventados para RP8/RP9.
+- Remoção de "Módulo navegável · v0.2" da Consulta às emendas.
+
+Este portal NÃO é oficial, não possui atualização em tempo real e não foi implantado pela UFES.
+
+Não há dependências externas ou necessidade de servidor para esta versão demonstrativa.
