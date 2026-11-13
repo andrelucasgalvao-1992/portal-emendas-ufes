@@ -277,7 +277,17 @@ body.high-contrast .access-top,body.high-contrast footer{background:#050c16}
 .exec-micro-card small{color:#61778d;display:block;line-height:1.35}
 .exec-chart{margin-bottom:47px}
 .exec-data-link{background:#edf4fc;color:#235b8c;padding:7px 10px;border:1px solid #bfd4e8;border-radius:6px;font-size:.77rem;font-weight:700}
-.exec-data-link:hover{background:#d9eaf9}.exec-emenda-author{text-align:left;max-width:250px;white-space:normal;min-width:165px}
+.exec-data-link:hover{background:#d9eaf9}
+.exec-detail-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.exec-detail-nav .exec-data-link{min-height:38px;cursor:pointer}
+.exec-detail-nav .exec-return-btn{background:#255b91;color:#fff;border-color:#255b91}
+.exec-detail-nav .exec-return-btn:hover{background:#194974;color:#fff}
+.exec-detail-nav .exec-data-link:disabled{opacity:.45;cursor:not-allowed;background:#f1f4f7;color:#637d91;border-color:#d4dee7}
+.exec-detail-nav .exec-data-link:focus-visible{outline:3px solid #d89c27;outline-offset:2px}
+.exec-detail-position{font-size:.78rem;font-weight:700;color:#4d6c88;text-align:right}
+.exec-detail-footer{margin-top:15px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+@media(max-width:720px){#execNEPanel>.panel-head{display:block}.exec-detail-nav{justify-content:flex-start;margin-top:12px}.exec-detail-position{text-align:left}}
+.exec-emenda-author{text-align:left;max-width:250px;white-space:normal;min-width:165px}
 .exec-obj{min-width:260px;max-width:520px;white-space:normal;text-align:left;line-height:1.4}
 .exec-empty{padding:20px;text-align:center;color:#698096}
 @keyframes ufesGaugeFill{from{stroke-dasharray:0 100}to{stroke-dasharray:var(--progress) 100}}
@@ -416,8 +426,8 @@ body.app-ready .kpi.meter-animate .value-arc{animation:ufesGaugeFill 1.4s cubic-
  <section class="panel" aria-labelledby="execDiagnosticTitle"><div class="panel-head"><div><h3 id="execDiagnosticTitle">Indicadores complementares</h3><p class="subtle">Etapas da despesa e restos a pagar, com limites de informação explícitos.</p></div></div><div class="exec-micro" id="execMicro"></div></section>
  <section class="panel" aria-labelledby="execChartTitle"><div class="panel-head"><div><h3 id="execChartTitle">Evolução por exercício</h3><p class="subtle" id="execChartSubtitle">Dotação, empenhos e pagamentos por ano, em R$ milhões.</p></div><div class="legend"><span><i style="background:var(--royal)"></i>Dotação</span><span><i style="background:var(--green)"></i>Empenhos</span><span><i style="background:var(--gold)"></i>Pagamentos*</span></div></div><div class="chart exec-chart" id="execChart" role="img" aria-label="Gráfico comparativo anual; valores na tabela abaixo"></div><div class="table-scroll"><table aria-label="Valores financeiros por ano"><thead><tr><th>Ano</th><th>Dotação atualizada</th><th>Empenhado</th><th>Liquidação</th><th>Pagamentos*</th><th>RP pagos</th><th>Saldo de RP</th></tr></thead><tbody id="execAnnualRows"></tbody></table></div><p class="tiny" id="execAnnualFoot"></p></section>
  <section class="panel" aria-labelledby="execEmendaTitle"><div class="panel-head"><div><h3 id="execEmendaTitle">Emendas individualizadas</h3><p class="subtle">Programações e autoria com Notas de Empenho novas, conforme exercício e modalidade escolhidos.</p></div><span class="status" id="execVisibleCount"></span></div>
- <div class="table-scroll"><table aria-label="Emendas parlamentares individualizadas"><thead><tr><th>Ano</th><th>RP</th><th>Código da emenda</th><th>Autoria</th><th>NEs</th><th>Dotação</th><th>Empenhado</th><th>Pagamentos das NEs até 2025</th><th>Ação</th></tr></thead><tbody id="execEmendaRows"></tbody></table></div><p class="tiny">Nota metodológica: os valores correspondem aos pagamentos identificados para as NEs novas de cada emenda, acumulados até 2025, inclusive quando efetuados após o exercício de emissão. Não representam o fluxo financeiro agregado, que pode incluir restos a pagar de outras emissões. R$ 0,00 indica ausência de pagamento identificado nesse recorte.</p></section>
- <section class="panel" id="execNEPanel" hidden aria-labelledby="execNETitle"><div class="panel-head"><div><h3 id="execNETitle">Notas de Empenho da programação selecionada</h3><p id="execNEIntro" class="subtle"></p></div></div><div class="table-scroll"><table aria-label="Notas de Empenho da emenda selecionada"><thead><tr><th>Nota de Empenho</th><th>Unidade gestora</th><th>Objeto resumido</th><th>Empenhado</th><th>Pagamentos*</th></tr></thead><tbody id="execNERows"></tbody></table></div><p class="tiny">Detalhamento documental da aba NEs 307; campos sem informação disponíveis são apresentados como n/d.</p></section>
+ <div class="table-scroll"><table aria-label="Emendas parlamentares individualizadas"><thead><tr><th>Ano</th><th>RP</th><th>Código da emenda</th><th>Autoria</th><th>NEs</th><th>Dotação</th><th>Empenhado</th><th>Pagamentos das NEs até 2025</th><th>Ação</th></tr></thead><tbody id="execEmendaRows"></tbody></table></div><p class="tiny">Nota metodológica: Os pagamentos individualizados corresponderam aos valores identificados e vinculados às Notas de Empenho das emendas selecionadas, considerando os pagamentos acumulados até 2025, inclusive os realizados em exercícios posteriores à emissão da Nota de Empenho. O valor R$ 0,00 indicou ausência de pagamento identificado nesse recorte.</p></section>
+ <section class="panel" id="execNEPanel" hidden aria-labelledby="execNETitle"><div class="panel-head"><div><h3 id="execNETitle">Notas de Empenho da programação selecionada</h3><p id="execNEIntro" class="subtle"></p><p class="exec-detail-position" id="execDetailPosition" aria-live="polite"></p></div><div class="exec-detail-nav" aria-label="Navegação pelo detalhamento das emendas"><button type="button" class="exec-data-link exec-return-btn" data-exec-back>← Voltar à lista de emendas</button><button type="button" class="exec-data-link" data-exec-previous>← Emenda anterior</button><button type="button" class="exec-data-link" data-exec-next>Próxima emenda →</button></div></div><div class="table-scroll"><table aria-label="Notas de Empenho da emenda selecionada"><thead><tr><th>Nota de Empenho</th><th>Unidade gestora</th><th>Objeto resumido</th><th>Empenhado</th><th>Pagamentos*</th></tr></thead><tbody id="execNERows"></tbody></table></div><p class="tiny">Detalhamento documental da aba NEs 307; campos sem informação disponíveis são apresentados como n/d.</p><div class="exec-detail-footer"><span class="tiny">Ao retornar, os filtros de exercício e modalidade permanecerão selecionados.</span><div class="exec-detail-nav" aria-label="Navegação ao final das Notas de Empenho"><button type="button" class="exec-data-link exec-return-btn" data-exec-back>← Voltar à lista de emendas</button><button type="button" class="exec-data-link" data-exec-previous>← Emenda anterior</button><button type="button" class="exec-data-link" data-exec-next>Próxima emenda →</button></div></div></section>
  <div class="data-note"><strong>Limitações:</strong> liquidação de 2022 não disponível (n/d); saldos de restos a pagar são estoques anuais e <strong>não podem ser somados entre exercícios</strong>. Os medidores utilizam o maior valor do recorte apenas como escala visual; seus arcos não medem, por si só, capacidade de execução ou quitação. Dados históricos, sem atualização automática.</div>
 </section>
 
@@ -769,9 +779,36 @@ function execRows(){
  const y=$('execYear').value,rp=$('execRP').value;
  return financeData.filter(r=>(y==='todos'||String(r.ano)===y)&&(rp==='todas'||r.rp===rp));
 }
+function execVisibleEmendas(){
+ const y=$('execYear').value,rp=$('execRP').value;
+ return emendaData.filter(e=>(y==='todos'||String(e.ano)===y)&&(rp==='todas'||e.rp===rp));
+}
 function execEmendas(){
- const y=$('execYear').value,rp=$('execRP').value,codigo=$('execEmenda').value;
- return emendaData.filter(e=>(y==='todos'||String(e.ano)===y)&&(rp==='todas'||e.rp===rp)&&(codigo==='todas'||e.codigo===codigo));
+ const codigo=$('execEmenda').value;
+ return execVisibleEmendas().filter(e=>codigo==='todas'||e.codigo===codigo);
+}
+function scrollExecTo(el,position='start'){
+ if(el)el.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:position});
+}
+function showExecEmenda(code){
+ const exists=execVisibleEmendas().some(e=>e.codigo===code);
+ if(!exists)return;
+ $('execEmenda').value=code;
+ renderExecucao();
+ scrollExecTo($('execNEPanel'));
+}
+function backToExecEmendas(){
+ const code=$('execEmenda').value;
+ $('execEmenda').value='todas';
+ renderExecucao();
+ const btn=[...document.querySelectorAll('[data-exec-code]')].find(b=>b.dataset.execCode===code);
+ if(btn){scrollExecTo(btn.closest('tr'),'center');btn.focus({preventScroll:true});}
+ else scrollExecTo($('execEmendaTitle'));
+}
+function moveExecEmenda(direction){
+ const visible=execVisibleEmendas(),current=$('execEmenda').value;
+ const i=visible.findIndex(e=>e.codigo===current),next=visible[i+direction];
+ if(next)showExecEmenda(next.codigo);
 }
 function execAggregate(){
  const selected=execEmendas(),code=$('execEmenda').value,individual=code!=='todas';
@@ -823,9 +860,14 @@ function renderExecucao(){
  $('execAnnualFoot').textContent=a.individual?'* Pagamentos das NEs novas da programação, conforme EMENDAS 14. Não há detalhamento de saldo ou RP pagos individual por emenda nessa aba.':'* Pagamentos totais por ano de lançamento incluem movimentações de RP de NEs de outros exercícios. Saldo de RP é um estoque por exercício, não deve ser somado entre anos.';
  $('execVisibleCount').textContent=`${selected.length} de 14 emendas`;
  $('execEmendaRows').innerHTML=selected.length?selected.map(e=>`<tr><td>${e.ano}</td><td>${e.rp}</td><td>${esc(e.codigo)}</td><td class="exec-emenda-author">${esc(e.autor)}</td><td>${e.nes}</td><td>${real(e.dotacao)}</td><td>${real(e.empenhos)}</td><td>${real(e.pagamentos_ne)}</td><td><button type="button" class="exec-data-link" data-exec-code="${esc(e.codigo)}">Detalhar</button></td></tr>`).join(''):'<tr><td colspan="9" class="exec-empty">Não há emendas com NEs novas nesta seleção.</td></tr>';
- document.querySelectorAll('[data-exec-code]').forEach(btn=>btn.addEventListener('click',()=>{$('execEmenda').value=btn.dataset.execCode;renderExecucao();$('execNEPanel').scrollIntoView({behavior:'smooth',block:'start'})}));
+ document.querySelectorAll('[data-exec-code]').forEach(btn=>btn.addEventListener('click',()=>showExecEmenda(btn.dataset.execCode)));
  $('execNEPanel').hidden=!a.individual;
- if(a.individual){const ns=notaData.filter(n=>n.codigo===code);$('execNEIntro').textContent=`${ns.length} notas associadas à emenda ${code}`; $('execNERows').innerHTML=ns.map(n=>`<tr><td>${esc(n.ne)}</td><td class="exec-obj">${esc(n.ug+' — '+n.unidade)}</td><td class="exec-obj" title="${esc(n.objeto)}">${esc(n.objeto)}</td><td>${n.empenhos===null?'n/d':real(n.empenhos)}</td><td>${n.pagamentos===null?'n/d':real(n.pagamentos)}</td></tr>`).join('')||'<tr><td colspan="5">Nenhum registro</td></tr>';}
+ if(a.individual){const ns=notaData.filter(n=>n.codigo===code);$('execNEIntro').textContent=`${ns.length} notas associadas à emenda ${code}`; $('execNERows').innerHTML=ns.map(n=>`<tr><td>${esc(n.ne)}</td><td class="exec-obj">${esc(n.ug+' — '+n.unidade)}</td><td class="exec-obj" title="${esc(n.objeto)}">${esc(n.objeto)}</td><td>${n.empenhos===null?'n/d':real(n.empenhos)}</td><td>${n.pagamentos===null?'n/d':real(n.pagamentos)}</td></tr>`).join('')||'<tr><td colspan="5">Nenhum registro</td></tr>';
+ const all=execVisibleEmendas(),pos=all.findIndex(e=>e.codigo===code);
+ $('execDetailPosition').textContent=pos>=0?`Emenda ${pos+1} de ${all.length} no recorte selecionado`:'';
+ document.querySelectorAll('[data-exec-previous]').forEach(b=>b.disabled=pos<=0);
+ document.querySelectorAll('[data-exec-next]').forEach(b=>b.disabled=pos<0||pos>=all.length-1);
+}
  animateMeters($('execGauges'));
 }
 function exportExecucao(){
@@ -843,6 +885,9 @@ function exportExecucao(){
 $('execYear').addEventListener('change',()=>{execOptions();renderExecucao()});
 $('execRP').addEventListener('change',()=>{execOptions();renderExecucao()});
 $('execEmenda').addEventListener('change',renderExecucao);
+document.querySelectorAll('[data-exec-back]').forEach(b=>b.addEventListener('click',backToExecEmendas));
+document.querySelectorAll('[data-exec-previous]').forEach(b=>b.addEventListener('click',()=>moveExecEmenda(-1)));
+document.querySelectorAll('[data-exec-next]').forEach(b=>b.addEventListener('click',()=>moveExecEmenda(1)));
 $('execClear').addEventListener('click',()=>{$('execYear').value='todos';$('execRP').value='todas';$('execEmenda').value='todas';execOptions();renderExecucao()});
 $('execExport').addEventListener('click',exportExecucao);
 execOptions();
